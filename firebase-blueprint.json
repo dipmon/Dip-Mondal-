@@ -1,0 +1,162 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile with game progress and unlocked levels",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Unique identifier of the user matching Google UID"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Google display name of the user",
+          "maxLength": 100
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Google avatar URL",
+          "maxLength": 500
+        },
+        "highestLevel": {
+          "type": "integer",
+          "description": "Highest level unlocked by the player"
+        },
+        "totalScore": {
+          "type": "integer",
+          "description": "Cumulative score achieved by the player"
+        },
+        "starsEarned": {
+          "type": "integer",
+          "description": "Total stars earned across completed levels"
+        },
+        "currentStreak": {
+          "type": "integer",
+          "description": "Current win streak count"
+        },
+        "puzzlesSolved": {
+          "type": "integer",
+          "description": "Total number of puzzles successfully completed"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of the last profile update"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp when the user profile was created"
+        }
+      },
+      "required": ["userId", "displayName", "highestLevel", "totalScore", "starsEarned", "currentStreak", "puzzlesSolved"]
+    },
+    "LeaderboardEntry": {
+      "title": "LeaderboardEntry",
+      "description": "Global leaderboard entry per player",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Google UID of the player"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Google display name of the player",
+          "maxLength": 100
+        },
+        "photoURL": {
+          "type": "string",
+          "description": "Google avatar URL",
+          "maxLength": 500
+        },
+        "score": {
+          "type": "integer",
+          "description": "High score of the player"
+        },
+        "highestLevel": {
+          "type": "integer",
+          "description": "Highest level reached by the player"
+        },
+        "stars": {
+          "type": "integer",
+          "description": "Total stars accumulated"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp of leaderboard record update"
+        }
+      },
+      "required": ["userId", "displayName", "score", "highestLevel", "stars"]
+    },
+    "VipRequest": {
+      "title": "VipRequest",
+      "description": "Customer VIP payment submission awaiting admin approval",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique request ID or UTR"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Player UID or client ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Customer Name",
+          "maxLength": 100
+        },
+        "number": {
+          "type": "string",
+          "description": "Customer Phone Number",
+          "maxLength": 20
+        },
+        "utr": {
+          "type": "string",
+          "description": "12-digit transaction UTR reference",
+          "maxLength": 30
+        },
+        "plan": {
+          "type": "string",
+          "description": "Selected plan: monthly or lifetime"
+        },
+        "amount": {
+          "type": "integer",
+          "description": "Payment amount in INR"
+        },
+        "status": {
+          "type": "string",
+          "description": "Approval status: pending, approved, or rejected"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Submission timestamp"
+        },
+        "approvedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Admin approval timestamp"
+        }
+      },
+      "required": ["id", "name", "number", "utr", "amount", "plan", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "Collection of user player profiles and progress"
+    },
+    "/leaderboard/{userId}": {
+      "schema": "LeaderboardEntry",
+      "description": "Global public leaderboard entries"
+    },
+    "/vip_requests/{requestId}": {
+      "schema": "VipRequest",
+      "description": "Customer VIP payment requests awaiting admin approval"
+    }
+  }
+}

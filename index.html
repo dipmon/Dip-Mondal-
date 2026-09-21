@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wire Connect: Cyber Circuit</title>
+    <meta name="description" content="A cyberpunk-themed circuit puzzle game featuring 1,000 unique levels across 4 cyber tiers, glowing neon wires, high-difficulty daily hack missions with time bounties, Google Authentication, offline caching, and global leaderboards." />
+    <meta property="og:title" content="Wire Connect: Cyber Circuit" />
+    <meta property="og:description" content="A cyberpunk-themed circuit puzzle game featuring 1,000 unique levels across 4 cyber tiers, glowing neon wires, high-difficulty daily hack missions with time bounties, Google Authentication, offline caching, and global leaderboards." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <script>
+      (function() {
+        var ignoredErrors = [
+          'Could not establish connection. Receiving end does not exist.',
+          'The message port closed before a response was received.',
+          'ResizeObserver loop completed with undelivered notifications.',
+          'ResizeObserver loop limit exceeded',
+          'Extension context invalidated'
+        ];
+        function matchesIgnored(msg) {
+          if (!msg) return false;
+          var str = String(msg);
+          for (var i = 0; i < ignoredErrors.length; i++) {
+            if (str.indexOf(ignoredErrors[i]) !== -1) return true;
+          }
+          return false;
+        }
+        window.addEventListener('unhandledrejection', function(event) {
+          var reason = event && (event.reason ? (event.reason.message || event.reason) : '');
+          if (matchesIgnored(reason)) {
+            event.preventDefault();
+            if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+          }
+        }, true);
+        window.addEventListener('error', function(event) {
+          var message = event && (event.message || event.error);
+          if (matchesIgnored(message)) {
+            event.preventDefault();
+            if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Adsterra Ad Scripts (Loaded only for Free users; Completely suppressed for VIP Subscribers) -->
+    <script>
+      (function() {
+        try {
+          var isVip = localStorage.getItem('cyber_ad_free_vip') === 'true' && !!localStorage.getItem('cyber_vip_utr');
+          if (!isVip) {
+            var s1 = document.createElement('script');
+            s1.src = 'https://pl29459616.profitableratecpmnetwork.com/4d/77/75/4d7775518b4541a82bc623381378d804.js';
+            s1.id = 'adsterra-socialbar-script';
+            s1.async = true;
+            document.body.appendChild(s1);
+
+            var s2 = document.createElement('script');
+            s2.src = 'https://pl29459614.profitableratecpmnetwork.com/6b/18/b1/6b18b18306fb23f5abf6da6c1c44add8.js';
+            s2.id = 'adsterra-popunder-script';
+            s2.async = true;
+            document.body.appendChild(s2);
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </body>
+</html>
+

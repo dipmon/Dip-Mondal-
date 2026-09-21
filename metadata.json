@@ -1,0 +1,6 @@
+{
+  "name": "Wire Connect: Cyber Circuit",
+  "description": "A cyberpunk-themed circuit puzzle game featuring 1,000 unique levels across 4 cyber tiers, glowing neon wires, high-difficulty daily hack missions with time bounties, Google Authentication, offline caching, and global leaderboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
